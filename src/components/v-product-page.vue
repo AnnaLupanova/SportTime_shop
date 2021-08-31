@@ -2,12 +2,12 @@
 <div class="v-product-page">
   <v-header/>
   <div class="page">
-    <img class="v-catalog-item__img" :src=" require('../images/'+ product.image)" alt="img">
+    <img v-if="product.image" class="v-catalog-item__img" :src="require('../images/' + product.image)" alt="img">
     <div class="product">
-      <p style="font:700 20px 'Montserrat', sans-serif;">{{product.name}}</p>
-      <p style="font:500 16px 'Montserrat', sans-serif;">Article:{{product.article}}</p>
-      <p style="font:500 16px 'Montserrat', sans-serif;"> <span class="desc">Description: </span>{{product.description}}</p>
-      <p style="font:500 16px 'Montserrat', sans-serif;"><span class="desc">Price:</span> {{product.price}}</p>
+      <p style="font:700 20px 'Montserrat', sans-serif;">{{this.product.name}}</p>
+      <p style="font:500 16px 'Montserrat', sans-serif;">Article:{{this.product.article}}</p>
+      <p style="font:500 16px 'Montserrat', sans-serif;"> <span class="desc">Description: </span>{{this.product.description}}</p>
+      <p style="font:500 16px 'Montserrat', sans-serif;"><span class="desc">Price:</span> {{this.product.price}}</p>
       <button class="btn" @click="addToCart">Buy</button>
     </div>
   </div>
@@ -19,6 +19,7 @@
 import {mapGetters, mapActions} from 'vuex'
 import vHeader from './v-header'
 import vFooter from './v-footer'
+import axios from 'axios'
 export default {
 name: "v-product-page",
   components:{
@@ -29,7 +30,7 @@ name: "v-product-page",
   },
   computed:{
   ...mapGetters([
-      'PRODUCTS'
+      'PRODUCTS','PRODUCTS_RUNNING','PRODUCTS_FITNESS','PRODUCTS_FOOTBALL'
   ]),
     product(){
     let result = {};
@@ -41,14 +42,25 @@ name: "v-product-page",
     })
       return result;
     }
+
   },
   methods:{
   ...mapActions([
-      'GET_PRODUCTS_FROM_API',
-      'ADD_TO_CART'
+      'GET_PRODUCTS_FROM_API'
   ]),
     addToCart() {
-      this.ADD_TO_CART(this.product)
+
+      axios.post('http://localhost:8080/basket', {
+        article: this.product.article
+      })
+          .then(function (response) {
+            console.log(response);
+
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
     }
   },
   mounted() {

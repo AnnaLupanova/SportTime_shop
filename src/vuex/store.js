@@ -63,7 +63,7 @@ let store = new Vuex.Store({
     },
     actions: {
         GET_PRODUCTS_FROM_API({commit}) {
-            return axios('http://localhost:8080/catalog', {
+            return axios('http://localhost:3030/products', {
                 method: "GET"
             })
          .then((products)=>{
@@ -77,7 +77,7 @@ let store = new Vuex.Store({
                 })
         },
         GET_PRODUCTS_FROM_API_RUNNING({commit}){
-            return axios('http://localhost:8080/catalog/running', {
+            return axios('http://localhost:3000/products', {
                 method: "GET"
             })
                 .then((products)=>{

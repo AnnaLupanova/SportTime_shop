@@ -1,6 +1,6 @@
 <template>
 <div class="v-catalog-item" >
-  <img class="v-catalog-item__img" :src=" require('../images/'+ product_data.image)" alt="img" @click="productClick">
+  <img class="v-catalog-item__img" v-if="product_data.image" :src="require('../images/' + product_data.image)" alt="img" @click="productClick">
   <p class="v-catalog-item__name">{{ product_data.name }}</p>
   <p class="v-catalog-item__price">Price:{{  product_data.price }} $</p>
   <button class="btn" @click="addToCart">Buy</button>
@@ -19,6 +19,7 @@ name: "v-catalog-item",
       }
     }
   },
+
   methods:{
     addToCart(){
      this.$emit('addToCart',this.product_data)

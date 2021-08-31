@@ -33,7 +33,7 @@
 <script>
 import vCartItem from './v-cart-item'
 import {mapActions} from'vuex'
-import {mapGetters} from 'vuex'
+/*import {mapGetters} from 'vuex'*/
 import vHeader from './v-header'
 //import axios from "axios";
 
@@ -60,15 +60,15 @@ name: "v-cart",
     }
 
 
-  },
+  }/*,
     ...mapGetters([
         'CART','CART_PRODUCT'
       ])
-
+*/
   },
   methods:{
   ...mapActions([
-    'DELETE_FROM_CART','INCREMENT_CART','DECREMENT_CART','GET_CART_PRODUCT'
+    'DELETE_FROM_CART','INCREMENT_CART','DECREMENT_CART'/*'GET_CART_PRODUCT'*/
   ]),
 
     increment(index){
@@ -80,11 +80,11 @@ name: "v-cart",
     deleteFromCart(index){
       this.DELETE_FROM_CART(index)
     }
-  },
+  }/*,
   mounted() {
   this.GET_CART_PRODUCT();
 
-  }
+  }*/
 }
 
 </script>

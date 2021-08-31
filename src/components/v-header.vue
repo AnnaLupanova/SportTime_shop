@@ -41,8 +41,8 @@
         </router-link>
       </div>
       <router-link :to="{name:'cart',params:{cart_data: CART}}">
-        <div class="column cart">
-          <a href=""> <i class="fas fa-shopping-cart"></i></a>
+        <div class="column cart" @click="GET_CART_PRODUCT">
+          <a href="" > <i class="fas fa-shopping-cart"></i></a>
           <div
               v-if="CART.length"
               class="v-catalog_to_cart">{{ CART.length }}
@@ -57,14 +57,20 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
+
 
 
 export default {
-name: "v-header",
-  computed:{
+  name: "v-header",
+  computed: {
     ...mapGetters([
-      'CART'
+      'CART', 'CART_PRODUCT'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'GET_CART_PRODUCT'
     ])
   }
 }

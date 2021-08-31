@@ -95,12 +95,12 @@ footer .sporttime{
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
-  padding: 62px 10px 0px 60px;
+  padding: 62px 0px 0px 260px;
 
 }
 footer .sporttime .column.first {
   width: 489px;
-  margin-right: 25px;
+  margin-right: 50px;
 }
 footer .sporttime .column.first h3 {
   color: rgb(204, 204, 204);
@@ -168,6 +168,7 @@ footer .sporttime .column.second .blog img {
   height: 81px;
   width: 110px;
   object-fit: cover;
+
 }
 footer .sporttime .column.second .blog .word {
   text-align: left;

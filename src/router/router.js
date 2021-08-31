@@ -12,21 +12,26 @@ import vFootball from '@/components/v-catalog-football'
 Vue.use(Router);
 
 let router = new Router({
-    mode: 'history',
+   devServer:{
+       historyApiFallback:true,
+       contentBase:'./',
+       hot:true
+
+   },
     routes: [
         {
             path: '/',
             name: 'home',
             component: vHome,
             props:true,
-            hashbang:false
+
         },
         {
             path: '/delivery',
             name: 'delivery',
             component: vDelivery,
             props:true,
-            hashbang:false
+
 
         },
         {
@@ -41,35 +46,33 @@ let router = new Router({
             name:'fitness',
             component: vFitness,
             props:true,
-            hashbang:false
         },
         {
             path:'/catalog/football',
             name:'football',
             component: vFootball,
             props:true,
-            hashbang:false
         },
         {
             path:'/basket',
             name:'cart',
             component: vCart,
             props:true,
-            hashbang:false
+
         },
         {
             path:'/product',
             name:'product',
             component: vProduct,
             props:true,
-            hashbang:false
+
         },
         {
             path:'/catalog',
             name:'catalog',
             component: vCatalog,
             props:true,
-            hashbang:false
+
         }
     ]
 })

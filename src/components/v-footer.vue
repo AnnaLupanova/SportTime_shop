@@ -1,6 +1,7 @@
 <template>
 <div class="v-footer">
   <footer>
+
     <div class="sporttime">
       <div class="column first">
         <h3>SportTime</h3>
