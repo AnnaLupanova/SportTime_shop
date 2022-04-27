@@ -50,8 +50,12 @@ name: "v-product-page",
   ]),
     addToCart() {
 
-      axios.post('http://localhost:8080/basket', {
-        article: this.product.article
+      axios.post('http://localhost:3000/basket', {
+        image: this.product.image,
+        name: this.product.name,
+        price: this.product.price,
+        article: this.product.article,
+        quantity: this.product.quantity
       })
           .then(function (response) {
             console.log(response);

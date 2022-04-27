@@ -63,7 +63,7 @@ let store = new Vuex.Store({
     },
     actions: {
         GET_PRODUCTS_FROM_API({commit}) {
-            return axios('http://localhost:3030/products', {
+            return axios('http://localhost:3000/products', {
                 method: "GET"
             })
          .then((products)=>{
@@ -91,7 +91,7 @@ let store = new Vuex.Store({
                 })
         },
         GET_PRODUCTS_FROM_API_FOOTBALL({commit}){
-            return axios('http://localhost:8080/catalog/football', {
+            return axios('http://localhost:3000/products', {
                 method: "GET"
             })
                 .then((products)=>{
@@ -105,11 +105,12 @@ let store = new Vuex.Store({
                 })
         },
         GET_PRODUCTS_FROM_API_FITNESS({commit}){
-            return axios('http://localhost:8080/catalog/fitness', {
+            return axios('http://localhost:3000/products', {
                 method: "GET"
             })
                 .then((products)=>{
 
+                    commit ("SET_PRODUCTS_TO_STATE_FITNESS",products.data);
                     commit ("SET_PRODUCTS_TO_STATE_FITNESS",products.data);
                     return products;
                 })
@@ -120,7 +121,7 @@ let store = new Vuex.Store({
         },
 
         GET_CART_PRODUCT({commit}){
-            return axios('http://localhost:8080/basket', {
+            return axios('http://localhost:3000/basket', {
                 method: "GET"
             })
                 .then((products)=>{

@@ -94,7 +94,7 @@ export default {
     ...mapGetters([
       'PRODUCTS',
       'CART',
-        'PRODUCTS_RUNNING'
+      'PRODUCTS_RUNNING'
     ]),
     filterPtoducts() {
       if (this.sortedProducts.length) {
@@ -114,8 +114,13 @@ export default {
     ]),
     addToCart(data) {
 
-      axios.post('http://localhost:8080/basket', {
-        article: data.article
+
+      axios.post('http://localhost:3000/basket', {
+        image: data.image,
+        name: data.name,
+        price: data.price,
+        article: data.article,
+        quantity: data.quantity
       })
           .then(function (response) {
             console.log(response);
